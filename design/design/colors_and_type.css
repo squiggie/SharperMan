@@ -1,0 +1,255 @@
+/* ============================================================
+   Sharper Man Design System — CSS Custom Properties
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap');
+
+/* ── Font Families ───────────────────────────────────────── */
+:root {
+  --font-display:  'Cormorant Garamond', Georgia, serif;
+  --font-body:     'DM Sans', system-ui, sans-serif;
+  --font-mono:     'DM Mono', 'Courier New', monospace;
+
+  /* ── Core Backgrounds ────────────────────────────────────── */
+  --color-black:           #080808;   /* Primary screen background */
+  --color-charcoal-deep:   #0F0F0F;   /* Bottom nav, input backgrounds */
+  --color-charcoal:        #1A1A1A;   /* Card surfaces */
+  --color-charcoal-mid:    #242424;   /* Secondary cards, nested surfaces */
+  --color-charcoal-light:  #2A2A2A;   /* Progress bar tracks, skeletons */
+  --color-charcoal-border: #252525;   /* Week day squares (unfilled) */
+
+  /* ── Gold — Primary Brand Accent ─────────────────────────── */
+  --color-gold:            #C8A84B;
+  --color-gold-light:      #E4C97A;
+  --color-gold-dim:        #8A6F2E;
+  --color-gold-subtle:     rgba(200, 168, 75, 0.12);
+  --color-gold-border:     rgba(200, 168, 75, 0.30);
+  --color-gold-tint:       rgba(200, 168, 75, 0.07);
+  --color-gold-pill:       rgba(200, 168, 75, 0.18);
+
+  /* ── Text ────────────────────────────────────────────────── */
+  --color-white:       #F5F0E8;   /* Primary text — warm white */
+  --color-white-dim:   #B8B0A0;   /* Secondary text, body */
+  --color-white-muted: #706860;   /* Placeholder, timestamps */
+  --color-grey:        #555555;   /* Inactive nav icons */
+
+  /* ── Three-Pillar System ─────────────────────────────────── */
+  --color-spiritual:        #C8A84B;
+  --color-mental:           #4B8EC8;
+  --color-mental-subtle:    rgba(75, 142, 200, 0.15);
+  --color-physical:         #7C4BC8;
+  --color-physical-subtle:  rgba(124, 75, 200, 0.15);
+
+  /* ── Semantic ────────────────────────────────────────────── */
+  --color-success:   #4CAF78;
+  --color-error:     #E07060;
+
+  /* ── Borders ─────────────────────────────────────────────── */
+  --color-border-dim:    rgba(255, 255, 255, 0.06);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+
+  /* ── Card Featured (gold) ────────────────────────────────── */
+  --color-card-gold-bg: #0F0C03;
+
+  /* ────────────────────────────────────────────────────────── */
+  /* Border Radii                                               */
+  /* ────────────────────────────────────────────────────────── */
+  --radius-card:    22px;
+  --radius-card-sm: 18px;
+  --radius-pill:    999px;
+  --radius-chip:    16px;
+  --radius-input:   999px;
+  --radius-week:    6px;
+
+  /* ────────────────────────────────────────────────────────── */
+  /* Spacing                                                    */
+  /* ────────────────────────────────────────────────────────── */
+  --spacing-screen-h: 18px;
+  --spacing-card-p:   14px;
+  --spacing-card-mb:  8px;
+  --spacing-chip-gap: 6px;
+
+  /* ────────────────────────────────────────────────────────── */
+  /* Navigation                                                 */
+  /* ────────────────────────────────────────────────────────── */
+  --nav-height:  62px;
+  --nav-pill-w:  40px;
+  --nav-pill-h:  26px;
+
+  /* ────────────────────────────────────────────────────────── */
+  /* Type Scale (px equivalents — RN pts × 1.0)                */
+  /* ────────────────────────────────────────────────────────── */
+
+  /* Display — Cormorant Garamond */
+  --text-screen-title-size:   28px;
+  --text-screen-title-lh:     32px;
+  --text-card-title-size:     18px;
+  --text-card-title-lh:       22px;
+  --text-stat-value-size:     21px;
+  --text-stat-value-lh:       24px;
+  --text-verse-size:          13px;
+  --text-verse-lh:            21px;
+
+  /* Body — DM Sans */
+  --text-eyebrow-size:        8px;
+  --text-eyebrow-ls:          2.0px;
+  --text-label-size:          8px;
+  --text-label-ls:            1.8px;
+  --text-body-size:           11px;
+  --text-body-lh:             17px;
+  --text-body-sm-size:        10px;
+  --text-body-sm-lh:          16px;
+  --text-caption-size:        9px;
+  --text-caption-lh:          14px;
+  --text-button-size:         13px;
+  --text-button-ls:           0.2px;
+  --text-button-sm-size:      12px;
+  --text-badge-size:          8px;
+  --text-badge-ls:            1.0px;
+}
+
+/* ── Semantic Type Classes ───────────────────────────────── */
+
+.sm-screen-title {
+  font-family: var(--font-display);
+  font-size: var(--text-screen-title-size);
+  line-height: var(--text-screen-title-lh);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.sm-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-card-title-size);
+  line-height: var(--text-card-title-lh);
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.sm-stat-value {
+  font-family: var(--font-display);
+  font-size: var(--text-stat-value-size);
+  line-height: var(--text-stat-value-lh);
+  font-weight: 700;
+}
+
+.sm-verse {
+  font-family: var(--font-display);
+  font-size: var(--text-verse-size);
+  line-height: var(--text-verse-lh);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--color-gold-light);
+}
+
+.sm-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-eyebrow-size);
+  font-weight: 600;
+  letter-spacing: var(--text-eyebrow-ls);
+  text-transform: uppercase;
+  color: var(--color-grey);
+}
+
+.sm-label {
+  font-family: var(--font-body);
+  font-size: var(--text-label-size);
+  font-weight: 600;
+  letter-spacing: var(--text-label-ls);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.sm-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+  font-weight: 400;
+  color: var(--color-white-dim);
+}
+
+.sm-body-sm {
+  font-family: var(--font-body);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
+  font-weight: 400;
+  color: var(--color-white-dim);
+}
+
+.sm-caption {
+  font-family: var(--font-body);
+  font-size: var(--text-caption-size);
+  line-height: var(--text-caption-lh);
+  font-weight: 400;
+  color: var(--color-grey);
+}
+
+.sm-button {
+  font-family: var(--font-body);
+  font-size: var(--text-button-size);
+  font-weight: 600;
+  letter-spacing: var(--text-button-ls);
+}
+
+.sm-badge {
+  font-family: var(--font-body);
+  font-size: var(--text-badge-size);
+  font-weight: 600;
+  letter-spacing: var(--text-badge-ls);
+  text-transform: uppercase;
+}
+
+.sm-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption-size);
+  color: var(--color-white-muted);
+}
+
+/* ── Base Reset for SM Components ────────────────────────── */
+.sm-root {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.sm-card {
+  background-color: var(--color-charcoal);
+  border-radius: var(--radius-card);
+  padding: var(--spacing-card-p);
+  margin-bottom: var(--spacing-card-mb);
+}
+
+.sm-card-gold {
+  background-color: var(--color-card-gold-bg);
+  border-radius: var(--radius-card);
+  padding: var(--spacing-card-p);
+  margin-bottom: var(--spacing-card-mb);
+  border: 1px solid var(--color-gold-border);
+}
+
+.sm-btn-primary {
+  height: 48px;
+  background-color: var(--color-gold);
+  border-radius: var(--radius-pill);
+  border: none;
+  font-family: var(--font-body);
+  font-size: var(--text-button-size);
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  width: 100%;
+}
+
+.sm-btn-secondary {
+  height: 42px;
+  background: transparent;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid rgba(200, 168, 75, 0.35);
+  font-family: var(--font-body);
+  font-size: var(--text-button-sm-size);
+  font-weight: 600;
+  color: var(--color-gold);
+  cursor: pointer;
+  width: 100%;
+}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sharper Man — UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #111; font-family: 'DM Sans', sans-serif; }
+  body { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+
+  /* Phone shell */
+  .phone-shell {
+    width: 390px;
+    height: 844px;
+    background: #080808;
+    border-radius: 52px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 40px 120px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.04);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  /* Status bar */
+  .status-bar {
+    height: 44px;
+    padding: 14px 28px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    background: #080808;
+  }
+  .status-time { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; color: #F5F0E8; }
+  .status-icons { display: flex; align-items: center; gap: 6px; }
+
+  /* Screen area */
+  .screen-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  /* Nav bar */
+  .nav-bar {
+    height: 62px;
+    background: #0F0F0F;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 8px;
+    flex-shrink: 0;
+  }
+  .nav-tab {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    cursor: pointer; padding: 4px 10px; border-radius: 12px;
+    transition: opacity .15s;
+  }
+  .nav-tab:hover { opacity: .8; }
+  .nav-pill {
+    width: 40px; height: 26px; border-radius: 999px;
+    background: rgba(200,168,75,0.18);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-label { font-family: 'DM Sans', sans-serif; font-size: 8px; font-weight: 600; letter-spacing: .3px; }
+
+  /* Home indicator */
+  .home-indicator {
+    height: 20px; background: #0F0F0F;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .home-bar { width: 120px; height: 4px; background: rgba(255,255,255,0.18); border-radius: 999px; }
+
+  /* Notch */
+  .notch {
+    position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 120px; height: 34px; background: #080808;
+    border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+    z-index: 10;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(200,168,75,0.2); border-radius: 999px; }
+
+  input::placeholder { color: #706860; }
+  input { background: transparent; outline: none; border: none; color: #F5F0E8; }
+
+  button { transition: opacity .15s; }
+  button:hover { opacity: .85; }
+  button:active { opacity: .7; }
+</style>
+</head>
+<body>
+
+<div class="phone-shell" id="phone">
+  <div class="notch"></div>
+
+  <!-- Status bar -->
+  <div class="status-bar">
+    <span class="status-time">9:41</span>
+    <div class="status-icons">
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="none">
+        <rect x="0" y="4" width="3" height="7" rx="1" fill="rgba(245,240,232,0.4)"/>
+        <rect x="4.5" y="2.5" width="3" height="8.5" rx="1" fill="rgba(245,240,232,0.6)"/>
+        <rect x="9" y="0" width="3" height="11" rx="1" fill="#F5F0E8"/>
+        <rect x="13.5" y="3" width="2.5" height="5" rx=".8" fill="none" stroke="#F5F0E8" strokeWidth=".8"/>
+        <rect x="14" y="4.5" width="1.5" height="2" rx=".4" fill="#F5F0E8"/>
+      </svg>
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
+        <path d="M7.5 2C10.5 2 13 3.5 14.5 5.8L13 7.3C11.8 5.5 9.8 4.3 7.5 4.3S3.2 5.5 2 7.3L.5 5.8C2 3.5 4.5 2 7.5 2z" fill="#F5F0E8"/>
+        <path d="M7.5 5.5C9.2 5.5 10.7 6.4 11.7 7.8L10.2 9.3C9.5 8.3 8.6 7.8 7.5 7.8S5.5 8.3 4.8 9.3L3.3 7.8C4.3 6.4 5.8 5.5 7.5 5.5z" fill="#F5F0E8"/>
+        <circle cx="7.5" cy="10" r="1.2" fill="#F5F0E8"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- React app mounts here -->
+  <div id="app-root" style="flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden;"></div>
+</div>
+
+<script type="text/babel" src="Components.jsx"></script>
+<script type="text/babel" src="HomeScreen.jsx"></script>
+<script type="text/babel" src="BibleScreen.jsx"></script>
+<script type="text/babel" src="CheckInScreen.jsx"></script>
+<script type="text/babel" src="PrayerScreen.jsx"></script>
+<script type="text/babel" src="ProgressScreen.jsx"></script>
+
+<script type="text/babel">
+const NAV_TABS = [
+  {
+    id: 'home', label: 'Home',
+    icon: (active) => (
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M9 2L2 7.5V16h5v-4h4v4h5V7.5L9 2z" fill={active ? '#C8A84B' : '#555555'} opacity=".9"/>
+      </svg>
+    )
+  },
+  {
+    id: 'bible', label: 'Bible',
+    icon: (active) => (
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <rect x="3" y="2" width="10" height="14" rx="1.5" stroke={active ? '#C8A84B' : '#555'} strokeWidth="1.5" fill="none"/>
+        <path d="M6 6h4M6 9h4M6 12h2" stroke={active ? '#C8A84B' : '#555'} strokeWidth="1.2" strokeLinecap="round"/>
+        <path d="M13 3h1a1 1 0 011 1v10a1 1 0 01-1 1h-1" stroke={active ? '#C8A84B' : '#555'} strokeWidth="1.2"/>
+      </svg>
+    )
+  },
+  {
+    id: 'checkin', label: 'Check-In',
+    icon: (active) => (
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M3 3h12a1 1 0 011 1v8a1 1 0 01-1 1H6l-3 2V4a1 1 0 011-1z" stroke={active ? '#C8A84B' : '#555'} strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+        <path d="M6 7h6M6 10h4" stroke={active ? '#C8A84B' : '#555'} strokeWidth="1.2" strokeLinecap="round"/>
+      </svg>
+    )
+  },
+  {
+    id: 'prayer', label: 'Prayer',
+    icon: (active) => (
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M6 3C6 3 3 6.5 3 9.5a4.5 4.5 0 009 0C12 6.5 9 3 9 3" stroke={active ? '#C8A84B' : '#555'} strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+        <path d="M9 13v3" stroke={active ? '#C8A84B' : '#555'} strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M7 16h4" stroke={active ? '#C8A84B' : '#555'} strokeWidth="1.5" strokeLinecap="round"/>
+      </svg>
+    )
+  },
+  {
+    id: 'progress', label: 'Progress',
+    icon: (active) => (
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M3 14l3.5-4.5 3 3L13 6l2.5 3.5" stroke={active ? '#C8A84B' : '#555'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+      </svg>
+    )
+  },
+];
+
+const SCREENS = { home: HomeScreen, bible: BibleScreen, checkin: CheckInScreen, prayer: PrayerScreen, progress: ProgressScreen };
+
+const App = () => {
+  const saved = localStorage.getItem('sm_tab') || 'home';
+  const [tab, setTab] = React.useState(saved);
+
+  const switchTab = (id) => {
+    setTab(id);
+    localStorage.setItem('sm_tab', id);
+  };
+
+  const Screen = SCREENS[tab];
+
+  return (
+    <React.Fragment>
+      <div style={{ flex:1, display:'flex', flexDirection:'column', minHeight:0, overflow:'hidden' }}>
+        <Screen />
+      </div>
+
+      {/* Bottom nav */}
+      <div className="nav-bar">
+        {NAV_TABS.map(({ id, label, icon }) => {
+          const active = tab === id;
+          return (
+            <div key={id} className="nav-tab" onClick={() => switchTab(id)}>
+              {active
+                ? <div className="nav-pill">{icon(true)}</div>
+                : icon(false)
+              }
+              <span className="nav-label" style={{ color: active ? '#C8A84B' : '#555' }}>{label}</span>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Home indicator */}
+      <div className="home-indicator"><div className="home-bar"></div></div>
+    </React.Fragment>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('app-root')).render(<App />);
+</script>
+</body>
+</html>
